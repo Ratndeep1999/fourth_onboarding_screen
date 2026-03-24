@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fourth_onboarding_screen/onboarding/data/onboarding_data.dart';
+import 'package:fourth_onboarding_screen/onboarding/widgets/bottom_function_widget.dart';
 import 'package:fourth_onboarding_screen/onboarding/widgets/onboarding_data_widget.dart';
 
 class OnboardingScreen extends StatefulWidget {
@@ -28,43 +29,39 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             const SizedBox(height: 30),
 
             /// Bottom Function Widget
-            Row(
-              children: [
-                /// Dot Indicator
-                Row(
-                  children: List.generate(
-                    onboardingData.length,
-                    (index) => AnimatedContainer(
-                      height: (_pageIndex == index) ? 40 : 16,
-                      width: 5,
-                      margin: EdgeInsets.symmetric(horizontal: 8.0),
-                      decoration: BoxDecoration(
-                        color: (_pageIndex == index)
-                            ? Colors.blue
-                            : Colors.blue.shade200,
-                        borderRadius: BorderRadius.circular(16.0),
-                      ),
-                      duration: Duration(milliseconds: 300),
-                    ),
-                  ),
-                ),
-                Spacer(),
-
-                /// Next Button
-                FilledButton(
-                  onPressed: () {},
-                  style: FilledButton.styleFrom(
-                    backgroundColor: Colors.blue,
-                    shape: CircleBorder(),
-                    padding: EdgeInsets.all(20),
-                  ),
-                  child: Icon(Icons.arrow_forward, size: 24),
-                ),
-              ],
+            BottomFunctionWidget(
+              pageIndex: _pageIndex,
+              onNextPress: onNextPress,
+              onDotTap: onDotTap,
             ),
           ],
         ),
       ),
+    );
+  }
+
+  /// Next Button Press
+  void onNextPress() {
+    if ((_pageIndex + 1) == onboardingData.length) {
+      /// Navigate To Home Screen
+      // Navigator.of(
+      //   context,
+      // ).pushReplacement(MaterialPageRoute(builder: () => HomeScreen()));
+    } else {
+      /// Next Page
+      _pageCtrl.nextPage(
+        duration: Duration(milliseconds: 500),
+        curve: Curves.easeInOut,
+      );
+    }
+  }
+
+  /// Single Dot Click
+  void onDotTap(int index) {
+    _pageCtrl.animateToPage(
+      index,
+      duration: Duration(milliseconds: 500),
+      curve: Curves.easeInOut,
     );
   }
 }
