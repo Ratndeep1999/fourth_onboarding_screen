@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:fourth_onboarding_screen/onboarding/data/onboarding_data.dart';
-import 'package:fourth_onboarding_screen/utils/constants/app_icons.dart';
-import 'package:fourth_onboarding_screen/utils/constants/app_texts.dart';
 import 'package:lottie/lottie.dart';
 
 class OnboardingScreen extends StatefulWidget {
@@ -19,7 +17,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   Widget build(BuildContext ctx) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 64.0, horizontal: 16.0),
+        padding: const EdgeInsets.symmetric(vertical: 80.0, horizontal: 16.0),
         child: Column(
           children: [
             /// Onboarding Data Widget
@@ -36,7 +34,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     children: [
                       /// Lottie Image
                       Lottie.asset(item.icon, height: 300, width: 300),
-                      const SizedBox(height: 30),
+                      const SizedBox(height: 60),
 
                       /// Title
                       Text(
@@ -48,7 +46,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           fontWeight: FontWeight.w500,
                         ),
                       ),
-                      const SizedBox(height: 30),
+                      const SizedBox(height: 40),
 
                       /// Description
                       Text(
@@ -67,7 +65,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             ),
             const SizedBox(height: 30),
 
-            ///
+            /// Bottom Function Widget
             Row(
               children: [
                 /// Dot Indicator
@@ -86,8 +84,18 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     ),
                   ),
                 ),
+                Spacer(),
 
                 /// Next Button
+                FilledButton(
+                  onPressed: () {},
+                  style: FilledButton.styleFrom(
+                    backgroundColor: Colors.blue,
+                    shape: CircleBorder(),
+                    padding: EdgeInsets.all(20),
+                  ),
+                  child: Icon(Icons.arrow_forward, size: 24),
+                ),
               ],
             ),
           ],
