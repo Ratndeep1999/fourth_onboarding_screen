@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fourth_onboarding_screen/onboarding/data/onboarding_data.dart';
 import 'package:fourth_onboarding_screen/onboarding/widgets/bottom_function_widget.dart';
 import 'package:fourth_onboarding_screen/onboarding/widgets/onboarding_data_widget.dart';
+import 'package:fourth_onboarding_screen/screens/home_screen.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -44,9 +45,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   void onNextPress() {
     if ((_pageIndex + 1) == onboardingData.length) {
       /// Navigate To Home Screen
-      // Navigator.of(
-      //   context,
-      // ).pushReplacement(MaterialPageRoute(builder: () => HomeScreen()));
+      Navigator.of(
+        context,
+      ).pushReplacement(MaterialPageRoute(builder: (ctx) => HomeScreen()));
     } else {
       /// Next Page
       _pageCtrl.nextPage(
