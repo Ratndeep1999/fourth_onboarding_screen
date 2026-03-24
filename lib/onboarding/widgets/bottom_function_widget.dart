@@ -24,7 +24,7 @@ class BottomFunctionWidget extends StatelessWidget {
 
             /// Single Dot
             (index) => InkWell(
-              onTap: onDotTap(index),
+              onTap: () => onDotTap(index),
               child: AnimatedContainer(
                 height: (_pageIndex == index) ? 40 : 16,
                 width: 5,
