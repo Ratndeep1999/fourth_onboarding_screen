@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fourth_onboarding_screen/core/services/shared_pref_service.dart';
 import 'package:fourth_onboarding_screen/onboarding/data/onboarding_data.dart';
 import 'package:fourth_onboarding_screen/onboarding/widgets/bottom_function_widget.dart';
 import 'package:fourth_onboarding_screen/onboarding/widgets/onboarding_data_widget.dart';
@@ -44,6 +45,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   /// Next Button Press
   void onNextPress() {
     if ((_pageIndex + 1) == onboardingData.length) {
+      /// Save Onboarding Status
+      SharedPrefService.setOnboardingStatus();
+
       /// Navigate To Home Screen
       Navigator.of(
         context,
