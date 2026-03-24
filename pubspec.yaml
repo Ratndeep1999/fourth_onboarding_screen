@@ -36,6 +36,8 @@ dependencies:
   cupertino_icons: ^1.0.8
   # Enable Lottie Features
   lottie: ^3.3.2
+  # Shared Preference Service
+  shared_preferences: ^2.5.4
 
 dev_dependencies:
   flutter_test:
