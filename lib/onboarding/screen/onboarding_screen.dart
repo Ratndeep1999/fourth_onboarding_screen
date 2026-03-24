@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fourth_onboarding_screen/onboarding/data/onboarding_data.dart';
-import 'package:lottie/lottie.dart';
+import 'package:fourth_onboarding_screen/onboarding/widgets/onboarding_data_widget.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -21,47 +21,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         child: Column(
           children: [
             /// Onboarding Data Widget
-            Expanded(
-              child: PageView.builder(
-                controller: _pageCtrl,
-                onPageChanged: (index) => setState(() => _pageIndex = index),
-                itemCount: onboardingData.length,
-                itemBuilder: (ctx, index) {
-                  /// Get Specific PAge Data
-                  final item = onboardingData[index];
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      /// Lottie Image
-                      Lottie.asset(item.icon, height: 300, width: 300),
-                      const SizedBox(height: 60),
-
-                      /// Title
-                      Text(
-                        item.title,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Colors.black54,
-                          fontSize: 28,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                      const SizedBox(height: 40),
-
-                      /// Description
-                      Text(
-                        item.desc,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Colors.black54,
-                          fontSize: 20,
-                          fontWeight: FontWeight.w300,
-                        ),
-                      ),
-                    ],
-                  );
-                },
-              ),
+            OnboardingDataWidget(
+              pageCtrl: _pageCtrl,
+              onPageChanged: (index) => setState(() => _pageIndex = index),
             ),
             const SizedBox(height: 30),
 
@@ -73,11 +35,13 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   children: List.generate(
                     onboardingData.length,
                     (index) => AnimatedContainer(
-                      height: false ? 16 : 32,
-                      width: 8,
+                      height: (_pageIndex == index) ? 40 : 16,
+                      width: 5,
                       margin: EdgeInsets.symmetric(horizontal: 8.0),
                       decoration: BoxDecoration(
-                        color: false ? Colors.blue : Colors.blue.shade200,
+                        color: (_pageIndex == index)
+                            ? Colors.blue
+                            : Colors.blue.shade200,
                         borderRadius: BorderRadius.circular(16.0),
                       ),
                       duration: Duration(milliseconds: 300),
